@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="/eel.js"></script>
+<title>ScrapIt</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="css/style.css">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('bg.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+</style>
+</head>
+
+  <body onload="disp();">
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+      <div class="w3-display-topleft w3-padding-large w3-xlarge" style="cursor: pointer;" onclick="window.location='main.html';">
+        SCRAP<span style='color: red'>IT</span>
+      </div>
+      <div class="w3-display-topmiddle">
+        <div class="content">
+      
+          <div class="container">
+            <h2 class="mb-5">Results</h2>
+            
+      
+            <div class="table-responsive" >
+      
+              <table class="table table-striped custom-table">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Order</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="he">
+                  
+                </tbody>
+              </table>
+            </div>
+      
+      
+          </div>
+       </div>
+      </div>
+    <script>
+      function disp(){
+        eel.dispjum()().then((r) => {inh(r);});
+  
+      }
+      function inh(h){
+        cont=document.getElementById("he");
+        cont.innerHTML+=h;
+       }
+    </script>
+  
+      
+
+
+
+</body>
+</html>
