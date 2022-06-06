@@ -5,9 +5,12 @@ from bs4 import BeautifulSoup
 import eel
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.edge.options import Options
 import time
 def main(st):
-    driver = webdriver.Edge()
+    options = Options()
+    options.add_argument("headless")
+    driver = webdriver.Edge(options = options)
     url ='https://www.jumia.ma'
     driver.get(url)
     def get_url(search_term):
@@ -27,21 +30,15 @@ def main(st):
         atag = item.a
         soup = BeautifulSoup(driver.page_source,'html.parser')
         results = soup.find_all('article',{'class':'prd _fb col c-prd'})
-        #results = soup.find_all('div' , {'class' : '-paxs row _no-g _4cl-3cm-shs'})
         len(results)
-        '''
+        imgdiv = atag.find('div',{'class':'img-c'})
+        imgele = imgdiv.img
+        img = imgele.get('data-src')
         link = 'https://www.jumia.ma' + atag.get('href')
         description = atag.get('data-name')
-        price = atag.get('data-price')
-        rat = item.find('div',{'class':'stars _s'}).text
-        res = (description,price,rat,link)
-        return res'''
-
-        link = 'https://www.jumia.ma' + atag.get('href')
-        description = atag.get('data-name')
-        price = atag.get('data-price')
+        price =atag.get('data-price')
         #rat = item.find('div',{'class':'stars _s'}).text
-        res = (description,price,link)
+        res = (description,price,link,img)
         return res
 
 
@@ -68,6 +65,6 @@ def main(st):
 
         with open('jum.csv', 'w' ,newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
-            writer.writerow(['Description','Price','Url'])
+            writer.writerow(['Description','Price','Url', 'Img'])
             writer.writerows(records)
     exitFlag = 1

@@ -31,11 +31,11 @@ def dispjum():
         des = line[0]
         price = line [1]
         ln= line [2]
-            
-        tr += "<tr>"                
-        tr += "<td>%s</td>" % str(i)
+        img = line[3] 
+        tr += '<tr scope="row">'                
+        tr += '<td><img src="%s" class="img"></td>' % img
         tr += "<td>%s</td>" % des               
-        tr += "<td>%s</td>" % price  
+        tr += '<td>$%s</td>' % price  
         tr += '<td><a href="%s" target="_blank" class="more">Link</a></td>' % ln          
         tr += "</tr>"
         i=i+1
@@ -61,6 +61,7 @@ def cl():
             if (k!=0 and line2[1] not in t):
                 line2[1]=line2[1]
                 line2[1]=float(line2[1])
+                line2[3]=str(line2[3]).strip()
                 m=m+line2[1]
                 t.append(line2)
             k+=1 
@@ -70,7 +71,7 @@ def cl():
         if (a[1]<1.3*m and a[1]>m):
             f.append(a)
     f=sorted(f,key=(lambda x:x[1]))
-    return f[:8]
+    return f[:5]
 @eel.expose
 def dispjum_old():
     tr=""
@@ -83,9 +84,9 @@ def dispjum_old():
                 des = line[0]
                 price = line [1]
                 ln= line [2]
-                    
+                img= line [3]
                 tr += "<tr>"                
-                tr += "<td>%s</td>" % str(i)
+                tr += '<td><img src=%s></td>' % img
                 tr += "<td>%s</td>" % des               
                 tr += "<td class='dollars'>%s</td>" % str(price)
                 tr += '<td><a href="%s" target="_blank" class="more">Link</a></td>' % ln          

@@ -1,3 +1,5 @@
+
+
 .lds-roller {
 	display: inline-block;
 	position: static;
@@ -83,7 +85,7 @@
 	  transform: rotate(360deg);
 	}
   }
-  
+
 
 
 
@@ -585,7 +587,7 @@ a {
 
 .w3-tooltip,
 .w3-display-container {
-	position: relative
+	position: sticky
 }
 
 .w3-tooltip .w3-text {
