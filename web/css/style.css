@@ -8,6 +8,7 @@ p {
 img{
   max-width: 50%;
   max-height: 50%;
+  object-fit: contain;
   display: block;
 }
 .box.small{

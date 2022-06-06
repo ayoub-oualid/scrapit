@@ -72,26 +72,4 @@ def cl():
             f.append(a)
     f=sorted(f,key=(lambda x:x[1]))
     return f[:5]
-@eel.expose
-def dispjum_old():
-    tr=""
-    file_name = "jum.csv"
-    with open(file_name) as file:
-        csv_reader_object = csv.reader(file)
-        i=0
-        for line in csv_reader_object:
-            if (i!=0): 
-                des = line[0]
-                price = line [1]
-                ln= line [2]
-                img= line [3]
-                tr += "<tr>"                
-                tr += '<td><img src=%s></td>' % img
-                tr += "<td>%s</td>" % des               
-                tr += "<td class='dollars'>%s</td>" % str(price)
-                tr += '<td><a href="%s" target="_blank" class="more">Link</a></td>' % ln          
-                tr += "</tr>"
-            i+=1  
-    return tr
-#print(dispjum())
-eel.start('main.html', mode='chrome-app', port=8080, cmdline_args=['--start-fullscreen', '--browser-startup-dialog'])
+eel.start('index.html', mode='chrome-app', port=8080, cmdline_args=['--start-fullscreen', '--browser-startup-dialog'])
