@@ -42,6 +42,7 @@ def main(recherche):
         try:
             price_parent = item.find('span' , 'a-price')
             price=price_parent.find('span' , 'a-offscreen').text.replace('$', '')
+            
         except AttributeError:
             return
         result = (description,price,url,img)
@@ -55,7 +56,6 @@ def main(recherche):
         record = extract_record(item)
         if record: 
             records.append(record)
-
 
 
     
