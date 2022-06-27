@@ -71,5 +71,7 @@ def cl():
         if (a[1]<1.3*m and a[1]>m):
             f.append(a)
     f=sorted(f,key=(lambda x:x[1]))
+    os.remove("ama.csv")
+    os.remove("jum.csv")
     return f[:5]
 eel.start('index.html', mode='chrome-app', port=8080, cmdline_args=['--start-fullscreen', '--browser-startup-dialog'])
